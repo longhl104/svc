@@ -5,14 +5,21 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct svc {
-    branch *HEAD;
-    size_t num_branches;
-    branch **branch;  // list of branches
+typedef struct file {
+    size_t hash;
+    char name[261];
+    size_t num_char;
+    char *content;
+} file;
 
-    size_t num_snapshots;
-    file **snapshot;
-} svc;
+typedef struct commit {
+    char id[7];
+    char *message;
+    struct commit *previous;
+
+    size_t num_committed;
+    file **committed;
+} commit;
 
 typedef struct branch {
     char name[51];
@@ -25,27 +32,20 @@ typedef struct branch {
     file **uncommitted;
 } branch;
 
-typedef struct commit {
-    char id[7];
-    char *message;
-    commit *previous;
-
-    size_t num_committed;
-    file **committed;
-} commit;
-
-typedef struct file {
-    size_t hash;
-    char name[261];
-    size_t num_char;
-    char *content;
-} file;
-
 typedef struct resolution {
     // NOTE: DO NOT MODIFY THIS STRUCT
     char *file_name;
     char *resolved_file;
 } resolution;
+
+typedef struct svc {
+    branch *HEAD;
+    size_t num_branches;
+    branch **branch;  // list of branches
+
+    size_t num_snapshots;
+    file **snapshot;
+} svc;
 
 void *svc_init(void);
 

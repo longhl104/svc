@@ -146,7 +146,7 @@ size_t check_change(file *file, commit *prev) {
 
 char *hex_value(size_t num) {
     char *hex = (char *)malloc(sizeof(char) * 7);
-    sprintf(hex, "%x", num);
+    sprintf(hex, "%lx", num);
     return hex;
 }
 
