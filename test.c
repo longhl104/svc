@@ -99,7 +99,17 @@ void test2() {
     cleanup(helper);
 }
 
+void test3() {
+    // void *h = svc_init();
+    // printf("%d\n", hash_file(h, "hello.py"));
+    // printf("%d\n", hash_file(h, "fake.c"));
+    // cleanup(h);
+
+    printf("%s\n", hex_value(123));
+}
+
 int main() {
     test1();
-    test2();
+    // test2();
+    // test3();
 }

@@ -45,7 +45,12 @@ typedef struct svc {
 
     size_t num_snapshots;
     file **snapshot;
+
+    size_t num_commits;
+    commit **commits;
 } svc;
+
+char *hex_value(size_t num);
 
 void *svc_init(void);
 
